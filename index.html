@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Li Ming Jun Justin · Portfolio</title>
+  <meta name="description" content="Final-year BBA at the University of Hong Kong, specialising in marketing and human resource management." />
+  <meta name="theme-color" content="#fafaf7" />
+  <style>
+    /* ---------- Reset & base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fafaf7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* ---------- Top strip ---------- */
+    .stripe { height: 3px; background: #BA7517; }
+
+    /* ---------- Top nav ---------- */
+    .top-bar {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 14px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+    }
+    .top-bar .brand { font-weight: 500; letter-spacing: 0.05em; }
+    .top-bar nav a {
+      color: inherit;
+      text-decoration: none;
+      margin-left: 24px;
+      opacity: 0.65;
+      transition: opacity 0.15s ease;
+    }
+    .top-bar nav a:hover { opacity: 1; }
+
+    /* ---------- Page ---------- */
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+    }
+
+    /* ---------- Header ---------- */
+    .eyebrow {
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      margin: 0 0 18px;
+      color: #888;
+    }
+    h1 {
+      font-size: 46px;
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      color: #1a1a1a;
+    }
+    .tagline {
+      font-size: 18px;
+      font-style: italic;
+      color: #555;
+      margin: 8px 0 0;
+      max-width: 480px;
+    }
+    .meta {
+      display: flex;
+      gap: 18px;
+      margin-top: 22px;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: #555;
+      flex-wrap: wrap;
+    }
+    .meta a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      padding-bottom: 1px;
+      transition: border-color 0.15s ease;
+    }
+    .meta a:hover { border-color: #1a1a1a; }
+
+    /* ---------- Photo placeholder ---------- */
+    .photo {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: #534AB7;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 500;
+      margin: 0 0 24px;
+      font-family: ui-serif, Georgia, serif;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      scroll-margin-top: 80px;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin: 0 0 24px;
+      color: #5F5E5A;
+      font-family: ui-serif, Georgia, serif;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    /* ---------- Entries ---------- */
+    .entry {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+    .entry:last-child { margin-bottom: 0; }
+    .when {
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: #888;
+      padding-top: 4px;
+      letter-spacing: 0.02em;
+    }
+    .entry h3 {
+      font-size: 17px;
+      font-weight: 500;
+      margin: 0;
+      color: #1a1a1a;
+    }
+    .company {
+      font-size: 14px;
+      font-style: italic;
+      color: #555;
+      margin: 4px 0 12px;
+    }
+    .bullets {
+      margin: 0;
+      padding-left: 18px;
+      color: #2a2a2a;
+    }
+    .bullets li { margin-bottom: 6px; }
+    .bullets li::marker { color: #BA7517; }
+
+    /* ---------- Skills ---------- */
+    .skills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .skill {
+      font-size: 13px;
+      padding: 6px 14px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 999px;
+      color: #444;
+    }
+
+    /* ---------- Contact CTA ---------- */
+    .cta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 22px;
+      border: 1px solid #1a1a1a;
+      border-radius: 999px;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .cta:hover { background: #1a1a1a; color: #fff; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 11px;
+      color: #888;
+    }
+    footer a { color: inherit; text-decoration: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 640px) {
+      .top-bar { padding: 12px 20px; }
+      .top-bar nav a { margin-left: 16px; }
+      .page { padding: 48px 22px 72px; }
+      h1 { font-size: 36px; }
+      .tagline { font-size: 16px; }
+      .entry { grid-template-columns: 1fr; gap: 6px; margin-bottom: 24px; }
+      .when { padding-top: 0; margin-bottom: 4px; }
+      footer { padding: 28px 22px 40px; flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ---------- Print ---------- */
+    @media print {
+      .top-bar, footer, .cta { display: none; }
+      body { background: #fff; }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stripe"></div>
+
+  <header class="top-bar">
+    <span class="brand">justin-li.com</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!--
+      PHOTO PLACEHOLDER
+      Swap the .photo div for: <img src="photo.jpg" alt="Justin Li" class="photo" />
+      when you have a headshot ready. Keep the class so the rounded styling carries.
+    -->
+    <div class="photo" aria-hidden="true">LM</div>
+
+    <p class="eyebrow">Portfolio · 2026 · Hong Kong</p>
+    <h1>Li Ming Jun Justin</h1>
+    <p class="tagline">Marketing &amp; human resource management, currently a final-year BBA at HKU.</p>
+    <div class="meta">
+      <a href="mailto:justin260305@gmail.com">justin260305@gmail.com</a>
+      <a href="tel:+85260108337">(+852) 6010 8337</a>
+      <a href="https://www.linkedin.com/in/justin-li-37a42632b" target="_blank" rel="noopener noreferrer">linkedin.com/in/justin-li</a>
+    </div>
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <p>Motivated final-year Bachelor of Business Administration student from the University of Hong Kong, specialising in marketing and human resource management. Practical experience as a marketing intern with hands-on involvement in key account management, aiming to leverage analytical skills to contribute positively to the organisation while continuing to develop professionally.</p>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+
+      <div class="entry">
+        <span class="when">Jun – Aug 2025</span>
+        <div>
+          <h3>Channel marketing intern — key account</h3>
+          <p class="company">Jebsen Beverage · Beer Division</p>
+          <ul class="bullets">
+            <li>Supported in-store display planning and execution for Blue Girl Beer's summer mega-display campaign across 10 Wellcome supermarkets in Hong Kong.</li>
+            <li>Managed Nielsen data deliverables records, maintaining clear documentation to support reporting, tracking, and internal audits.</li>
+            <li>Prepared and submitted weekly pricing updates and promotion forms for key accounts, ensuring timely and accurate price execution.</li>
+            <li>Conducted competitor monitoring and promotion compliance checks across accounts, summarising activities and flagging discrepancies to inform strategy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="when">Nov 2023 – May 2025</span>
+        <div>
+          <h3>Part-time auditing intern</h3>
+          <p class="company">CAN (HK) CPA Limited</p>
+          <ul class="bullets">
+            <li>Collaborated with senior accountants to provide tax compliance consulting for local entities, enhancing compliance accuracy.</li>
+            <li>Analysed complex financial statements to identify inconsistencies, contributing to improved audit readiness.</li>
+            <li>Conducted thorough vouching and testing of transactions, improving validity for internal control evaluations.</li>
+            <li>Managed audit processes effectively, ensuring compliance with accounting standards.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+
+      <div class="entry">
+        <span class="when">Jan – Jun 2026</span>
+        <div>
+          <h3>BSc International Business Administration</h3>
+          <p class="company">Rotterdam School of Management · Study exchange</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="when">Sep 2023 – Present</span>
+        <div>
+          <h3>Bachelor of Business Administration</h3>
+          <p class="company">The University of Hong Kong</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="leadership">
+      <h2 class="section-title">Leadership</h2>
+
+      <div class="entry">
+        <span class="when">Feb – Nov 2024</span>
+        <div>
+          <h3>Internal vice-chairperson</h3>
+          <p class="company">Business and Economics Association, HKUSU</p>
+          <ul class="bullets">
+            <li>Directed a 300-participant Inauguration Ceremony; managed 40 external guests from diverse business entities and 30 student parties from 8 local universities.</li>
+            <li>Coordinated a 200-people, 3-day faculty orientation camp, guiding 3 teams of 20 volunteers through a 72-hour programme; 47% of attendees went on to apply for Executive Committee positions.</li>
+            <li>Developed practical leadership skills and fostered communication across the committee while orchestrating a variety of events.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills">
+        <span class="skill">Company analysis</span>
+        <span class="skill">Client communication</span>
+        <span class="skill">Project management</span>
+        <span class="skill">Operations management</span>
+        <span class="skill">Strategic marketing</span>
+        <span class="skill">Adaptability</span>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Get in touch</h2>
+      <p>Open to full-time roles and internships in marketing, key-account management, or audit-adjacent work in Hong Kong or remote. The fastest way to reach me is email.</p>
+      <a class="cta" href="mailto:justin260305@gmail.com">Email me</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Li Ming Jun Justin</span>
+    <span>Hong Kong · <a href="mailto:justin260305@gmail.com">justin260305@gmail.com</a></span>
+  </footer>
+</body>
+</html>
